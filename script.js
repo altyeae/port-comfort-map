@@ -127,11 +127,29 @@ function init() {
             (place.img ? '<img class = "hotel-icon" src="' + place.img + '"width=165px height=165px>' : '') +
             '</div>';
 
-        var placemark = new ymaps.Placemark(place.coords, {
-            balloonContentBody: balloonContentBody
-        }, {
-            balloonMaxWidth: 800
-        });
+        var placemark;
+
+        if (place.id === "10970" || place.id === "33783") {
+            placemark = new ymaps.Placemark(place.coords, {
+                balloonContentBody: balloonContentBody
+            }, {
+                balloonMaxWidth: 800,
+                iconLayout: 'default#image',
+                iconImageHref: 'icon4.png',
+                iconImageSize: [55, 55],
+                iconImageOffset: [-15, -42]
+            });
+        } else {
+            placemark = new ymaps.Placemark(place.coords, {
+                balloonContentBody: balloonContentBody
+            }, {
+                balloonMaxWidth: 800,
+                iconLayout: 'default#image',
+                iconImageHref: 'icon3.png',
+                iconImageSize: [55, 55],
+                iconImageOffset: [-15, -42]
+            });
+        }        
 
         map.geoObjects.add(placemark);
 
